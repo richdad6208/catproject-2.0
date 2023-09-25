@@ -4,7 +4,8 @@
   "description": "캣프로젝트 버전 2.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "keywords": [
     "node.js",
@@ -14,8 +15,14 @@
   "author": "richdad",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongodb": "^6.1.0",
     "mongoose": "^7.5.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.20",
+    "@babel/node": "^7.22.19",
+    "nodemon": "^3.0.1"
   }
 }
