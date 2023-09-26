@@ -5,9 +5,10 @@ const { apiRouter, globalRouter } = require("./src/router");
 require("./src/db");
 const morgan = require("morgan");
 
-app.set(express.json());
-app.set(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
+
 app.use("/", globalRouter);
 
 app.use("/api", apiRouter);

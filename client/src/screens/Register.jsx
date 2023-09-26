@@ -46,7 +46,11 @@ function Register() {
     axios
       .post("/api/auth/sign-up", body)
       .then((response) => {
-        console.log(response);
+        if (response.data.success) {
+          console.log(response.data);
+        } else {
+          setErrorMessage(response.data.errorMessage);
+        }
       })
       .catch(console.error);
   }
