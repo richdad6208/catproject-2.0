@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Form } from "../styles/Form";
 import Button from "../components/Button";
@@ -27,6 +28,7 @@ const Wrapper = styled.div`
 `;
 
 function Register() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -47,7 +49,8 @@ function Register() {
       .post("/api/auth/sign-up", body)
       .then((response) => {
         if (response.data.success) {
-          console.log(response.data);
+          setErrorMessage("");
+          navigate("/login");
         } else {
           setErrorMessage(response.data.errorMessage);
         }
