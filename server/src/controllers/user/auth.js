@@ -22,23 +22,7 @@ async function createUser(req, res) {
 }
 
 async function loginUser(req, res) {
-  const { email, password } = req.body;
-  const checkEmail = await User.findOne({ email });
-  if (!checkEmail) {
-    return res.json({
-      success: false,
-      errorMessage: "이메일 또는 비밀번호가 틀립니다",
-    });
-  }
-  const checkPassword = await User.findOne({ password });
-  if (!checkPassword) {
-    return res.json({
-      success: false,
-      errorMessage: "이메일 또는 비밀번호가 틀립니다",
-    });
-  }
-
-  res.status(201).json({ success: true });
+  res.status(200).json({ success: true, user: req.user });
 }
 
 module.exports = {

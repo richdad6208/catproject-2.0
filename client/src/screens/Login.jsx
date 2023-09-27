@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Form } from "../styles/Form";
 import Button from "../components/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { inputValue } from "../utils";
 
@@ -32,6 +32,7 @@ const Wrapper = styled.div`
 `;
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -43,6 +44,8 @@ function Login() {
       .then((response) => {
         if (response.data.success) {
           setErrorMessage("");
+          console.log(response.data.user);
+          navigate("/");
         } else {
           setErrorMessage(response.data.errorMessage);
         }

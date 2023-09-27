@@ -1,7 +1,7 @@
-const api = require("./apiRouter");
+const apiRouter = require("./apiRouter");
 const globalRouter = require("./globalRouter");
 
 module.exports = {
-  api,
+  apiRouter,
   globalRouter,
 };
