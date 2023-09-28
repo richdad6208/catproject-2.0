@@ -1,4 +1,4 @@
-const { createUser, loginUser } = require("./auth");
+const { createUser, loginUser } = require("./usersControllers");
 
 module.exports = {
   createUser,

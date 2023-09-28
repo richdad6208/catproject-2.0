@@ -1,9 +1,10 @@
 const express = require("express");
-const auth = require("./auth");
+const usersRouter = require("./usersRouter");
 const posts = require("./posts");
+const authRouter = require("./auth");
 const api = express.Router();
 
 api.use("/posts", posts);
-api.use("/auth", auth);
-
+api.use("/users", usersRouter);
+api.use("/auth", authRouter);
 module.exports = api;

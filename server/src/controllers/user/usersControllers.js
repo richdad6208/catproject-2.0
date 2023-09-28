@@ -1,4 +1,5 @@
 const User = require("../../db/schemas/User");
+const jwt = require("jsonwebtoken");
 
 async function createUser(req, res) {
   const { email, password, userName } = req.body;
@@ -16,13 +17,22 @@ async function createUser(req, res) {
     password,
     userName,
   });
-  console.log(user);
+
+  setUserToken(res, { email, userName });
 
   res.json({ success: true, user });
 }
 
 async function loginUser(req, res) {
-  res.status(200).json({ success: true, user: req.user });
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) {
+    res.json({ success: false });
+  }
+
+  const token = jwt.sign({ email, userName: user.userName }, "secret");
+  res.cookie("token", token);
+  res.status(200).json({ success: true, accessToken: token });
 }
 
 module.exports = {

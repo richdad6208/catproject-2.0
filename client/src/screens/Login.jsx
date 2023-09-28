@@ -44,7 +44,7 @@ function Login() {
       .then((response) => {
         if (response.data.success) {
           setErrorMessage("");
-          console.log(response.data.user);
+          console.log(response.data);
           navigate("/");
         } else {
           setErrorMessage(response.data.errorMessage);
